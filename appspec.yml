@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/CodeDeploy
+    overwrite: yes
+permissions:
+  - object: /home/ubuntu/CodeDeploy
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
+hooks:
+  AfterInstall:
+    - location: scripts/deploy.sh
+      timeout: 60
+      runas: root
