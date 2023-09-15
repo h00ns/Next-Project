@@ -6,11 +6,11 @@ files:
     overwrite: yes
 permissions:
   - object: /home/ubuntu/CodeDeploy
-    owner: ubuntu
-    group: ubuntu
+    owner: root
+    group: root
     mode: 755
 hooks:
   AfterInstall:
     - location: scripts/deploy.sh
       timeout: 60
-      runas: ubuntu
+      runas: root
