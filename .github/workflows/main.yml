@@ -34,11 +34,11 @@ jobs:
 
       - name: Upload to S3
         run: |
-          aws s3 cp --region ap-northeast-2 ./hoon-build.zip s3://hoon-server-s3-bucket/hoon-build.zip
+          aws s3 cp --region ap-northeast-2 ./hoon-build.zip s3://hoon-s3/hoon-build.zip
 
       - name: Code Deploy
         run: aws deploy create-deployment
-          --application-name hoon-deploy
+          --application-name hoon-code-deploy
           --deployment-config-name CodeDeployDefault.AllAtOnce
           --deployment-group-name hoon-deploy-group
-          --s3-location bucket=hoon-server-s3-bucket,bundleType=zip,key=hoon-build.zip
+          --s3-location bucket=hoon-s3,bundleType=zip,key=hoon-build.zip
