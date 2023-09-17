@@ -26,7 +26,7 @@ jobs:
         shell: bash
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -38,7 +38,7 @@ jobs:
 
       - name: Code Deploy
         run: aws deploy create-deployment
-          --application-name hoon-code-deploy
+          --application-name hoon-deploy
           --deployment-config-name CodeDeployDefault.AllAtOnce
-          --deployment-group-name hoon-deploy-group
+          --deployment-group-name hoon-group
           --s3-location bucket=hoon-s3,bundleType=zip,key=hoon-build.zip
